@@ -17,7 +17,6 @@ export default function Page() {
             {message.toolInvocations?.map((tool, toolIndex) => (
               <div key={toolIndex} className="mt-2 bg-gray-100 p-2 rounded">
                 <div className="text-sm text-gray-600">Tool: {tool.toolName}</div>
-                <div>{tool.args}</div>
               </div>
             ))}
             <div className="mt-2">{message.content}</div>
