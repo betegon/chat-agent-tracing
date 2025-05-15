@@ -25,6 +25,7 @@ export async function POST(req: Request) {
     model: openai('gpt-4o'),
     system: 'You are a helpful assistant.',
     messages,
+    experimental_telemetry: { isEnabled: true },
     tools: {
       getLocation: {
         description: 'Get the location of the user',
