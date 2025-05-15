@@ -8,11 +8,13 @@ interface Message {
   toolInvocations?: ToolInvocation[];
 }
 
-function getLocation() {
+function getLocation({ city = 'San Francisco' }: { city: string }) {
+  // Pretend we're looking up coordinates for the city
   return { lat: 37.7749, lon: -122.4194 };
 }
 
-function getWeather({ lat, lon, unit }) {
+function getWeather({ lat, lon, unit = 'C' }: { lat: number; lon: number; unit: 'C' | 'F' }) {
+  // Pretend we're fetching real weather data
   return { value: 25, description: 'Sunny' };
 }
 
@@ -26,9 +28,11 @@ export async function POST(req: Request) {
     tools: {
       getLocation: {
         description: 'Get the location of the user',
-        parameters: z.object({}),
+        parameters: z.object({
+          city: z.string().describe('The city to get coordinates for'),
+        }),
         execute: async (args, { toolCallId }) => {
-          const { lat, lon } = getLocation();
+          const { lat, lon } = getLocation(args);
           return {
             toolCallId,
             result: `Your location is at latitude ${lat} and longitude ${lon}`
@@ -45,11 +49,10 @@ export async function POST(req: Request) {
             .describe('The unit to display the temperature in'),
         }),
         execute: async (args, { toolCallId }) => {
-          const { lat, lon, unit } = args;
-          const { value, description } = getWeather({ lat, lon, unit });
+          const { value, description } = getWeather(args);
           return {
             toolCallId,
-            result: `It is currently ${value}°${unit} and ${description}!`
+            result: `It is currently ${value}°${args.unit} and ${description}!`
           };
         },
       },
