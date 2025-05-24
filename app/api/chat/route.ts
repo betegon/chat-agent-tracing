@@ -22,10 +22,16 @@ export async function POST(req: Request) {
   const { messages }: { messages: Message[] } = await req.json();
 
   const result = streamText({
-    model: openai('gpt-4o'),
+    model: openai('gpt-4.1-nano-2025-04-14'),
     system: 'You are a helpful assistant.',
     messages,
-    experimental_telemetry: { isEnabled: true },
+    experimental_telemetry: { isEnabled: true,
+      functionId: 'Weather-Function',
+      metadata: {
+        weatherCustomKey: 'custom value',
+        weatherOtherKey: 'other value',
+      },
+     },
     tools: {
       getLocation: {
         description: 'Get the location of the user',
