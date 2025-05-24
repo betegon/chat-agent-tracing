@@ -3,6 +3,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   /* config options here */
+  transpilePackages: ['@spotlightjs/spotlight', '@spotlightjs/overlay', '@spotlightjs/sidecar'],
 };
 
 export default withSentryConfig(nextConfig, {
