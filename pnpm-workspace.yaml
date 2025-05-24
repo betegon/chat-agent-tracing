@@ -1,0 +1,2 @@
+overrides:
+  '@spotlightjs/spotlight': link:../spotlight/packages/spotlight
