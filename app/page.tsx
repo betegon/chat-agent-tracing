@@ -19,18 +19,7 @@ export default function Page() {
 
   return (
     <div className="p-4">
-      <div className="flex gap-4 mb-6">
-        <img 
-          src="/Screenshot 2025-09-30 at 17.01.03.png" 
-          alt="Screenshot 1" 
-          className="w-1/2 h-auto rounded-lg shadow-lg"
-        />
-        <img 
-          src="/Screenshot 2025-10-01 at 14.22.38.png" 
-          alt="Screenshot 2" 
-          className="w-1/2 h-auto rounded-lg shadow-lg"
-        />
-      </div>
+
       <div className="space-y-4 mb-4">
         {messages.map((message, index) => {          
           return (
