@@ -1,0 +1,11 @@
+FROM node:20-alpine
+
+# Set working directory
+WORKDIR /app
+
+# Copy the mock service script
+COPY mock-service/index.js .
+
+# Run the mock service
+CMD ["node", "index.js"]
+
