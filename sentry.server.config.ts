@@ -3,7 +3,8 @@
 // https://docs.sentry.io/platforms/javascript/guides/nextjs/
 
 import * as Sentry from "@sentry/nextjs";
-
+console.log('[Sentry Server Config] NEXT_PUBLIC_SENTRY_SPOTLIGHT:', process.env.NEXT_PUBLIC_SENTRY_SPOTLIGHT);
+console.log('[Sentry Server Config] SENTRY_SPOTLIGHT:', process.env.SENTRY_SPOTLIGHT);
 Sentry.init({
   dsn: "https://783cfef4186f5cb5a043509374e6f4ed@o4509473911603200.ingest.de.sentry.io/4510040149459024",
 
@@ -13,7 +14,6 @@ Sentry.init({
   // Setting this option to true will print useful information to the console while you're setting up Sentry.
   debug: false,
 
-  spotlight: true,
   // Enable structured logs
-    enableLogs: true,
+  enableLogs: true,
 });

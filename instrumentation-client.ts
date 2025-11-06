@@ -33,7 +33,18 @@ Sentry.init({
   debug: false,
 
   // Enable structured logs
-    enableLogs: true,
+  enableLogs: true,
+
+  beforeSend: (event, hint) => {
+    console.log('beforeSend!!!!!!!!!!!!', event, hint);
+    return event;
+  },
+
+  beforeSendTransaction: (transaction, hint) => {
+    console.log('beforeSendTransaction!!!!!!!!!!!!', transaction, hint);
+    return transaction;
+  },
+
 });
 
 export const onRouterTransitionStart = Sentry.captureRouterTransitionStart;

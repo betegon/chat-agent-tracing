@@ -9,14 +9,20 @@ services:
       - .:/app
       - /app/node_modules
       - /app/.next
+    env_file:
+      - .env
     environment:
       - NODE_ENV=development
     stdin_open: true
     tty: true
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
 
   mock-service:
     build:
       context: .
       dockerfile: Dockerfile.mock
+    env_file:
+      - .env
     stdin_open: true
     tty: true
